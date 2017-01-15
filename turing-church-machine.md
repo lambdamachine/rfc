@@ -50,4 +50,57 @@ Consider an example lambda expression:
  
 That's how we could access the *space* from within lambda calculus, now considering previous question, another arises. Whether the `get` and `set` functions can be defined as pure lambda expressions or shall be provided by the underlying virtual machine. In other words, can lambda expression define *space-time* discretly and implicitly on top of execution unit, or execution unit must provide necessary primitives to let us access space?
 
-The real question then is, can we create an execution unit that implicitly executes lambda expression, without need of I/O primites at all?
+The real question then is, can we create an execution unit that implicitly executes lambda expression, without need of I/O primitives at all?
+
+Yet another question is if can this be done efficiently?
+
+Lets see. Imagine lambda expressions as a tree.
+
+```
+λx.x
+```
+
+Execution tree for such expression can be drawn based on identity function.
+
+```
+input --> λx.x = input ? -- N --> x = input ? -- Y --> output
+```
+
+Since lambda calculus takes only one input and produces only one output, execution tree is binary. We can write execution tree of our identity funciton as binary then:
+
+```
+(λx.x) = 0
+```
+
+> Why 0?
+
+Consider couple of examples:
+
+```
+(((λ x y z. x (y z))I)I)I      1
+((λ y z. I (y z))I)I           1
+(λ z. I (I z))I                1
+I (I I)                        0
+I I                            0
+I                              0
+      
+111000
+
+((λ x y . x)I)I   1
+(λy.I)I           1
+I I               0
+I                 0
+
+1100
+
+((λ x y . x)I)I   1
+(λy.y)I = I I     0
+I                 0
+
+100
+```
+
+This way we can effectively store any lambda expression in binary form.
+
+TODO: Explain how this translates into building *space* and *space-time*
+TODO: Explain how virtual machines can use pattern recognition instead of APIs to integrate with lambda machine. Point that pattern recognition of calculus execution can be considered output, and whenever input provided so far was insufficient to reach final identity, more input is expected to be provided.
