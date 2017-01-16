@@ -45,6 +45,12 @@ Common syntax supports currying:
 λx.x(λy.λz.x(y z)) = λx.x(λ y z . x (y z))
 ```
 
+To improve readability, we allow curryied arguments to be separaded with comma:
+
+```
+λx,y,z.x y z
+```
+
 ### Whitespaces
 
 Whitespaces are to be ignored:
