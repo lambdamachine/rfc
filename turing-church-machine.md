@@ -104,3 +104,50 @@ This way we can effectively store any lambda expression in binary form.
 
 TODO: Explain how this translates into building *space* and *space-time*
 TODO: Explain how virtual machines can use pattern recognition instead of APIs to integrate with lambda machine. Point that pattern recognition of calculus execution can be considered output, and whenever input provided so far was insufficient to reach final identity, more input is expected to be provided.
+
+---
+
+Different approach. Imagine a **wormhole** function:
+
+```
+λtrue.(
+  λfalse.(
+    λ # pairs...
+      λ # lists...
+        λ # hash-maps...
+          λ # other necessary stuff...
+            λtape.(
+              λprogram.(program tape)
+            )(map /true  true 
+                  /false false
+                  /list  list
+                  ...
+                  /map   map) 
+  )λx,y.y
+)λx,y.x
+```
+
+Now we should be able to write programs like this:
+
+```
+λtape.
+  λtrue,false,list,...,map.(
+    (map /hello true)
+  )(tape /true)
+   (tape /false)
+   (tape /list)
+   ...
+   (tape /map)
+```
+
+Long story short, the wormhole defines bootsrap standard library, that ends with implementation of map. An expression applied to the wormhole will be grated access to **tape**. The tape is an infinite addressable structure (a hash-map fits). The tape can be now used to inject dependencies into inner expression, just like in second example.
+
+To be practical, and to make the language usable, we would need to go with sorts of shortcuts implemented by the common lambda itself. One approach might be to shorthand access to tape:
+
+```
+λ/. 
+  /true /false
+```
+This example aliases `tape` with `/`, therefore enables us to shorthand `tape /true` into `/true`.
+
+FIXME: These examples look lousy and inconsistent, think of better ones.
