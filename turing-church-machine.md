@@ -151,3 +151,21 @@ To be practical, and to make the language usable, we would need to go with sorts
 This example aliases `tape` with `/`, therefore enables us to shorthand `tape /true` into `/true`.
 
 FIXME: These examples look lousy and inconsistent, think of better ones.
+
+---
+
+## Hash Tables?
+
+NOTE: This one should be probably a separate RFC, covering different kinds of maps, tries and even exotic automatas as a way to uniformly store data.
+
+One notable idea to start with is the concept of routes, based on the implementation of **strings**. Consider string implementation as a list leading to a route:
+
+```
+λa.(
+  λb.(
+    a b
+  )λnext.(left left left right left right left left) next
+)λnext.(left right left left right left left left) next
+```
+
+Where **left** and **right** are route modifiers. Now by using key `ab` what we are really telling the computer is to go to a particular place in memory by following the strict route. Such route-ordered memory can be then easy to cache and exchange across the network.
