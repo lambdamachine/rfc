@@ -1,47 +1,25 @@
-# Common Lambda
+# Common Λ
+
+_CΛ_, _Common Lambda_, _Common Lambda Programming Language_.
 
 ## Purpose
 
-Define syntax of practical programming language based on [_lambda calculus_](./lambda-calculus) system proposed by Alonzo Church.
+Define syntax of practical programming language based on [_Λ-calculus_](./lambda-calculus) system.
 
-## Formal definition
+## Dependencies
 
-Lambda expressions are composed of:
+Before reading this document, you should be familiar with:
 
-* variables `v1`, `v2`, ..., `vn`, ...
-* the abstraction symbols, greek lambda `λ` and dot `.`
-* left `(` and right `)` parentheses
+* [_Λ-calculus_](./lambda-calculus)
+* [_Combinatory logic_](./combinatory-logic)
 
-The set of lambda expressions, noted as capital greek lambda `Λ`, can be defined inductively:
+## CΛ vs. Λ-calculus
 
-#### Variables
+_Common Λ_ aims to be _Λ-calculus_ compatible. With the exception of [free variables](#free-variables), any valid _Λ-calculus_ expression shall be valid expression in _CΛ_.
 
-If `x` is a variable then `x ∈ Λ`.
+### Free variables
 
-#### Applications
-
-If `M, N ∈ Λ`, then `(M N) ∈ Λ`.
-
-#### Lambda Abstractions
-
-If `x` is a variable and `M ∈ Λ`, then `(λx.M) ∈ Λ`.
-
-### Conventions
-
-To keep the notation of lambda expressions uncluttered, the following conventions are usually applied:
-
-* Outermost parentheses are dropped: `M N` is used instead of `(M N)`
-* Applications are assumed to be left associative: `((M N) P)` may be written shortly as `M N P` 
-* The body of an abstraction extends as far right as possible: `λx.M N` means `λx.(M N)` and not `(λx.M) N`
-* A sequence of abstractions is contracted: sequence `λx.λy.λz.N` can be abbreviated as `λx y z.N`
-
-> NOTE! In _common lambda_, expression `λx y z.N` is not the same as `λxyz.N`. The first one expands as `λx.λy.λz.N` while the other is just a single abstraction with an argument named `xyz`.
-
-### Free and bound variables
-
-In formal definition of _lambda calculus_, the abstraction operator, greek letter `λ`, is said to bind its variable wherever it occurs in the body of the abstraction. Variables that fall within the scope of an abstraction are said to be **bound**. All other variables are called **free**. For example, in the following expression `y` is a bound variable and `x` is free: `λy.x x y`. Also note that a variable is bound by its _nearest_ abstraction. The single occurrence of `x` in `λx.y (λx.z x)` is bound by the second lambda abstraction. An expression that contains no free variables is said to be **closed**. Closed lambda expressions are also known as **combinators** and are equivalent to **terms** in _combinatory logic_.
-
-> IMPORTANT! Unlike in _lambda calculus_, in _common lambda_ **only combinators are allowed**. In other words, **all variables must be bound** in an expression for it to be valid _common lambda_ expression.
+For practical reasons, [_free variables as in Λ-calculus_](./lambda-calulus#free-variables) are not supported by _CΛ_. In order for a Λ-expression to be valid expression in _CΛ_, **all its variables must be bound**. In other words, **only combinators are valid expressions** in _CΛ_.
 
 TODO: An image here would be awesome, something like road sign with description "only combinators allowed".
 
@@ -49,8 +27,7 @@ TODO: An image here would be awesome, something like road sign with description 
 
 ### Abstract syntax tree
 
-Syntax of _common lambda_ combinators can be represented by an abstract tree with only three types of leafs - **variable**, **abstraction**, and **application**, as defined in our [formal definition](#formal-definition).
-
+Syntax of _common Λ_ expressions can be represented by an abstract tree with only three types of leafs - **variable**, **abstraction**, and **application**, as defined in our [formal definition](#formal-definition).-
 ### Parser
 
 TODO: describe checkpoints for implementing a parser.
