@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Define syntax of common lambda calculus programming language supported by Lambda Machine.
+Define syntax of practical programming language based on [_lambda calculus_](./lambda-calculus) system proposed by Alonzo Church.
 
 ## Formal definition
 
@@ -44,10 +44,6 @@ In formal definition of _lambda calculus_, the abstraction operator, greek lette
 > IMPORTANT! Unlike in _lambda calculus_, in _common lambda_ **only combinators are allowed**. In other words, **all variables must be bound** in an expression for it to be valid _common lambda_ expression.
 
 TODO: An image here would be awesome, something like road sign with description "only combinators allowed".
-
-## Examples
-
-TODO: Write few paragphs intro, something like lambda calculus for dummies. I want this document to be understood without walking out for extra resources. Examples should briefly explain what are combinators too.
 
 ## Syntax
 
