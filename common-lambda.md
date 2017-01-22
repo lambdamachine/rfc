@@ -28,19 +28,22 @@ TODO: An image here would be awesome, something like road sign with description 
 
 ### Abstract syntax tree
 
-Syntax of _common Λ_ expressions can be represented by an abstract tree with only three types of leafs - **variable**, **abstraction**, and **application**, as defined in our [formal definition of _Λ-calculus_](./lambda-calculus#formal-definition). We can define Λ-expression set as a union:
+Syntax of _common Λ_ expressions can be represented by an abstract tree with only three types of leafs - **variable**, **abstraction**, and **application**, as defined in our [formal definition of _Λ-calculus_](./lambda-calculus#formal-definition). We can define Λ-expression set as the following union:
 
 ```
-Λ = Variable ∪ Abstraction ∪ Application
+Λ = Variables ∪ Abstractions ∪ Applications
 ```
 
-#### Variable
-
-Stating the obvious, a variable is a set of one element - a `name`. Theoretically, anything can be a variable, thus we can describe it:
+Now, any variable is a set of one element - a `name`. Theoretically, anything can be a variable name, thus we can describe it:
 
 ```
 Variable = { 
   name ∈ ∞
+}
+
+Variables = {
+  Variable,
+  ...
 }
 ```
 
@@ -50,8 +53,13 @@ Considering abstraction as `λarg.body`, we have a set of two elements - `arg` a
 
 ```
 Abstraction = { 
-  arg  ∈ Variable,
+  arg  ∈ Variables, 
   body ∈ Λ
+}
+
+Abstractions = { 
+  Abstraction, 
+  ...
 }
 ```
 
@@ -60,9 +68,14 @@ Abstraction = {
 Finally, considering application as `(fn arg)`, we have a set of two elements - this time `fn` and `arg` - respectively, function and applied argument. Written formally:
 
 ```
-Application = {
-  fn  ∈ Λ,
+Application = { 
+  fn  ∈ Λ, 
   arg ∈ Λ
+}
+
+Applications = {
+  Application,
+  ...
 }
 ```
 
