@@ -161,4 +161,4 @@ TODO: describe checkpoints for implementing a parser.
 
 > HASHTAGS! [**#commonlambda**](/hashtag/commonlambda)
 
-[lambda-calculus-formal-definition](./lambda-calculus#formal-definition)
+[lambda-calculus-formal-definition]: ./lambda-calculus#formal-definition
