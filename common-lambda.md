@@ -69,14 +69,13 @@ A typical scanner of Λ-expressions should take single input - a rune reader - w
 Reader = 𝑓 ⟶ Rune
 ```
 
-A scanner must provide an interface to scan input streams of runes into recognized blocks. We can define scanner as a function from `Reader` to `Block`:
+A scanner must provide an interface to scan input streams of runes into recognized blocks. We can define scanner as a function from `Reader` to a tuple `Block` and `Reader`:
 
 ```
-Scanner = 𝑓: Reader ⟶ Block
+Scanner = 𝑓: Reader ⟶ (Block, Reader)
 ```
 
 We can define block as well, with `String` representing any finite chain of runes:
-
 
 ```
 Block = {
@@ -101,10 +100,18 @@ Token = {
 }
 ```
 
+For the sake of flexibility, practical extensions system can be defined as a factory function:
+
+```
+ComplexScanner = 𝑓: {Scanner, ...} ⟶ Scanner
+```
+
+The factory expects to get a set of middleware scanners and generates one complex scanner.
+
 ### Parser
 
 ```
-Parser = 𝑓: Reader ⟶ Λ ∪ ParserError
+Parser = 𝑓: Reader ⟶ (Λ ∪ ParserError, Reader)
 
 Trace = {
   position ∈ ℕ+
