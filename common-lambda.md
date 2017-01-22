@@ -81,6 +81,4 @@ TODO: describe checkpoints for implementing a parser.
 
 ## Related material
 
-Hashtags:
-
-* [**#commonlambda**](/hashtag/commonlambda)
+> HASHTAGS! [**#commonlambda**](/hashtag/commonlambda)
