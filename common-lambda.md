@@ -1,6 +1,6 @@
 # Common Λ
 
-_CΛ_, _Common Lambda_, _Common Lambda Programming Language_.
+_CΛ_ &middot; _Common Lambda_ &middot; _Common Lambda Programming Language_
 
 ## Purpose
 
@@ -20,7 +20,7 @@ _Common Λ_ aims to be _Λ-calculus_ compatible. With the exception of [free var
 
 ### Free variables
 
-For practical reasons, [_free variables as in Λ-calculus_](./lambda-calulus#free-variables) are not supported by _CΛ_. In order for a Λ-expression to be valid expression in _CΛ_, **all its variables must be bound**. In other words, **only combinators are valid expressions** in _CΛ_.
+For practical reasons, [free variables as in _Λ-calculus_](./lambda-calulus#free-variables) are not supported by _CΛ_. In order for a Λ-expression to be valid expression in _CΛ_, **all its variables must be bound**. In other words, **only combinators are valid expressions** in _CΛ_.
 
 TODO: An image here would be awesome, something like road sign with description "only combinators allowed".
 
@@ -34,7 +34,7 @@ Syntax of _common Λ_ expressions can be represented by an abstract tree with on
 Λ = Variables ∪ Abstractions ∪ Applications
 ```
 
-Now, any variable is a set of one element - a `name`. Theoretically, anything can be a variable name, thus we can describe it:
+Variable is a set of one element - a `name`. Theoretically, anything can be a variable name, thus we can describe it:
 
 ```
 Variable = { 
@@ -46,8 +46,6 @@ Variables = {
   ...
 }
 ```
-
-#### Abstraction
 
 Considering abstraction as `λarg.body`, we have a set of two elements - `arg` and `body` - being abstraction argument name and Λ-expression body, respectively. We can write it formally:
 
@@ -62,8 +60,6 @@ Abstractions = {
   ...
 }
 ```
-
-#### Application
 
 Finally, considering application as `(fn arg)`, we have a set of two elements - this time `fn` and `arg` - respectively, function and applied argument. Written formally:
 
@@ -83,66 +79,8 @@ Applications = {
 
 TODO: describe checkpoints for implementing a parser.
 
----
+## Related material
 
-Syntax of Common Lambda expressio `E` can be generalised as folows:
+Hashtags:
 
-```
-E = ( v | λv.E | (E)E )
-```
-
-Examples of variables as in `E = v` are:
-
-```
-x
-hello
-(yada-yada-yada)
-```
-
-Examples of application as in `E = (E)E` are:
-
-```
-(x)y
-(x((y)z))
-(λx.x)(λx.λy.(x)y)
-```
-
-Examples of lambda abstractions as in `E = λv.E` are:
-
-```
-λx.y
-λx.λy.x
-(λx.(λy.(x)y)
-```
-
-### Currying
-
-Common syntax supports currying:
-
-```
-λx.λy.λz.x y z = λ x y z . x y z
-λx.x(λy.λz.x(y z)) = λx.x(λ y z . x (y z))
-```
-
-To improve readability, we allow curryied arguments to be separaded with comma:
-
-```
-λx,y,z.x y z
-```
-
-### Whitespaces
-
-Whitespaces are to be ignored:
-
-```
-λ   x y   z   . ( x     y  z  ) = λ x y z . (x y z)
-```
-
-### Parentheses 
-
-Most outer parens are optional:
-
-```
-(λx.(x x)) = λx.y z
-(λx.(λy.((x)y)))) = λx.λy.(x)y = λx.λy.x y
-```
+* [**#commonlambda**](/hashtag/commonlambda)
