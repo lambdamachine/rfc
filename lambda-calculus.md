@@ -50,7 +50,4 @@ At this point, you might be interested in reading about:
 * [_Combinatory logic_](./combinatory-logic)
 * [_Common Λ programming language_](./common-lambda)
 
-Hashtags:
-
-* [**#lambdacalculus**](/hashtag/lambdacalculus)
-* [#commonlambda](/hashtag/commonlambda)
+> HASHTAGS! [**#lambdacalculus**](/hashtag/lambdacalculus) [#commonlambda](/hashtag/commonlambda)
