@@ -112,7 +112,7 @@ Trace = {
 
 UnexpectedToken = {
   Trace,
-  token ∈ Tokens
+  token ∈ Token
 }
 
 UnexpectedEndOfInput = {
