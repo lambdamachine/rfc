@@ -8,11 +8,11 @@ Define syntax of practical programming language based on [_Λ-calculus_](./lambd
 
 ## Dependencies
 
-Before reading this document, you should be familiar with:
-
-* [_Λ-calculus_](./lambda-calculus)
-* [_Combinatory logic_](./combinatory-logic)
-* [_Sets_](./sets)
+* [Λ-calculus](./lambda-calculus)
+* [Combinatory logic](./combinatory-logic)
+* [Sets](./sets)
+* [Parsers](./parsers)
+* [Abstract syntax trees](./abstract-syntax-trees)
 
 ## CΛ vs. Λ-calculus
 
