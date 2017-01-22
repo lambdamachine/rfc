@@ -103,6 +103,39 @@ Tokens = {
 
 ### Parser
 
+```
+Parser = { 
+  input ∈ { Rune, ... },
+  Parse ∈ f() -> Λ ∪ ParserErrors
+}
+
+Position = N
+
+ParserError = {
+  position ∈ Position
+}
+
+UnexpectedToken = {
+  ParserError,
+  token ∈ Tokens
+}
+
+UnexpectedEndOfInput = {
+  ParserError
+}
+
+UnexpectedFreeVariable = {
+  ParserError,
+  variable ∈ Variables
+}
+
+ParserErrors = {
+  UnexpectedToken,
+  UnexpectedEndOfInput,
+  UnexpectedFreeVariable
+}
+```
+
 TODO: describe checkpoints for implementing a parser.
 
 ## Related material
