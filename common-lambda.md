@@ -131,11 +131,7 @@ UnexpectedFreeVariable = {
   variable ∈ Variable
 }
 
-ParserError = {
-  UnexpectedToken,
-  UnexpectedEndOfInput,
-  UnexpectedFreeVariable
-}
+ParserError = UnexpectedToken ∪ UnexpectedEndOfInput ∪ UnexpectedFreeVariable
 ```
 
 TODO: describe checkpoints for implementing a parser.
