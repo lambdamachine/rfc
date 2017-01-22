@@ -140,6 +140,67 @@ ParserError = {
 
 TODO: describe checkpoints for implementing a parser.
 
+All valid examples:
+
+| Example                            | Expected interpretation       |
+|------------------------------------|-------------------------------|
+| `x`                                | `x`                           |
+| `x y`                              | `x y`                         |
+| `x y z`                            | `x y z`                       |
+| `x (y z)`                          | `x (y z)`                     |
+| `λx.x`                             | `λx.x`                        |
+| `λx.x y z`                         | `λx.x y z`                    |
+| `λx.x (y z) m n`                   | `λx.x (y z) m n`              |
+| `λx y z.x y z`                     | `λx.λy.λz.x y z`              |
+| `λx.λy.λz.x y z`                   | `λx.λy.λz.x y z`              |
+| `λ x.  λ y.λz  . x y z`            | `λx.λy.λz.x y z`              |
+| `(x)`                              | `x`                           |
+| `(x y)`                            | `x y`                         |
+| `(x y z)`                          | `x y z`                       |
+| `(x (y z))`                        | `x (y z)`                     |
+| `(x ((y)z))`                       | `x (y z)`                     |
+| `(x ((y)(z)))`                     | `x (y z)`                     |
+| `(x ((y)(z)))(x y)`                | `x (y z) (x y)`               |
+| `((x ((y)(z))))(x y)`              | `x (y z) (x y)`               |
+| `(x (y z m n o) j (k l))`          | `x (y z m n o) j (k l)`       |
+| `(x (y z (m n (k l)) o))`          | `x (y z (m n (k l)) o)`       |
+| `   (  x(y z  ) )   `              | `x (y z)`                     |
+| `(λx.x)`                           | `λx.x`                        |
+| `(λx.x y z)`                       | `λx.x y z`                    |
+| `(λx.x (y z) m n)`                 | `λx.x (y z) m n`              |
+| `(λx.λy.x)`                        | `λx.λy.x`                     |
+| `(λx.(λy.x))`                      | `λx.λy.x`                     |
+| `(λx.x (λy.x))`                    | `λx.x (λy.x)`                 |
+| `(λx.x (λy.(x y)) x (λy z.(x z)))` | `λx.x (λy.x y) x (λy.λz.x z)` |
+| `(  λ\t\tx .x (λy  .\nx)\n)`       | `λx.x (λy.x)`                 |
+
+Errors:
+
+| Example        | Expected error            |
+|----------------|---------------------------|
+| `  `           | `UnexpectedEndOfInput`    |
+| `(`            | `UnexpectedEndOfInput`    |
+| `(x`           | `UnexpectedEndOfInput`    |
+| `((x y)`       | `UnexpectedEndOfInput`    |
+| `((x y) z`     | `UnexpectedEndOfInput`    |
+| `((x y) (x y)` | `UnexpectedEndOfInput`    |
+| `λx`           | `UnexpectedEndOfInput`    |
+| `λx.`          | `UnexpectedEndOfInput`    |
+| `(x y) λx.λy.` | `UnexpectedEndOfInput`    |
+| `λx.)`         | `UnexpectedToken(RPAREN)` |
+| `λx.()`        | `UnexpectedToken(RPAREN)` |
+| `λx.(x))`      | `UnexpectedToken(RPAREN)` |
+| `)`            | `UnexpectedToken(RPAREN)` |
+| `()`           | `UnexpectedToken(RPAREN)` |
+| `λ)`           | `UnexpectedToken(RPAREN)` |
+| `λx.(λx.) y`   | `UnexpectedToken(RPAREN)` |
+| `λ(`           | `UnexpectedToken(LPAREN)` |
+| `λx(`          | `UnexpectedToken(LPAREN)` |
+| `.`            | `UnexpectedToken(DOT)`    |
+| `λ.`           | `UnexpectedToken(DOT)`    |
+| `λx..`         | `UnexpectedToken(DOT)`    |
+| `λx.x.`        | `UnexpectedToken(DOT)`    |
+
 ## Related material
 
 > HASHTAGS! [**#commonlambda**](/hashtag/commonlambda)
