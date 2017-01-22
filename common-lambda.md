@@ -61,7 +61,7 @@ Finally, considering application as `(fn arg)`, we have a set of two elements - 
 
 ```
 Application = {
-  fn  ∈ Λ
+  fn  ∈ Λ,
   arg ∈ Λ
 }
 ```
