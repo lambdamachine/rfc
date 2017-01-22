@@ -12,6 +12,7 @@ Before reading this document, you should be familiar with:
 
 * [_Λ-calculus_](./lambda-calculus)
 * [_Combinatory logic_](./combinatory-logic)
+* [_Sets_](./sets)
 
 ## CΛ vs. Λ-calculus
 
@@ -27,7 +28,44 @@ TODO: An image here would be awesome, something like road sign with description 
 
 ### Abstract syntax tree
 
-Syntax of _common Λ_ expressions can be represented by an abstract tree with only three types of leafs - **variable**, **abstraction**, and **application**, as defined in our [formal definition](#formal-definition).-
+Syntax of _common Λ_ expressions can be represented by an abstract tree with only three types of leafs - **variable**, **abstraction**, and **application**, as defined in our [formal definition of _Λ-calculus_](./lambda-calculus#formal-definition). We can define Λ-expression set as a union:
+
+```
+Λ = Variable ∪ Abstraction ∪ Application
+```
+
+#### Variable
+
+Stating the obvious, a variable is a set of one element - a `name`. Theoretically, anything can be a variable, thus we can describe it:
+
+```
+Variable = { 
+  name ∈ ∞
+}
+```
+
+#### Abstraction
+
+Considering abstraction as `λarg.body`, we have a set of two elements - `arg` and `body` - being abstraction argument name and Λ-expression body, respectively. We can write it formally:
+
+```
+Abstraction = { 
+  arg  ∈ Variable,
+  body ∈ Λ
+}
+```
+
+#### Application
+
+Finally, considering application as `(fn arg)`, we have a set of two elements - this time `fn` and `arg` - respectively, function and applied argument. Written formally:
+
+```
+Application = {
+  fn  ∈ Λ
+  arg ∈ Λ
+}
+```
+
 ### Parser
 
 TODO: describe checkpoints for implementing a parser.
