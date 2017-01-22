@@ -107,7 +107,7 @@ Token = {
 Parser = 𝑓: Reader ⟶ Λ ∪ ParserError
 
 Trace = {
-  position ∈ 𝗡
+  position ∈ ℕ+
 }
 
 UnexpectedToken = {
