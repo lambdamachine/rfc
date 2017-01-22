@@ -28,7 +28,7 @@ TODO: An image here would be awesome, something like road sign with description 
 
 ### Abstract syntax tree
 
-Syntax of _common Λ_ expressions can be represented by an abstract tree with only three types of leafs - **variable**, **abstraction**, and **application**, as defined in our [formal definition of _Λ-calculus_](./lambda-calculus#formal-definition). We can define Λ-expression set as the following union:
+Syntax of _common Λ_ expressions can be represented by an abstract tree with only three types of leafs - **variable**, **abstraction**, and **application**, as defined in our [formal definition of _Λ-calculus_](lambda-calculus-formal-definition). We can define Λ-expression set as the following union:
 
 ```
 Λ = Variables ∪ Abstractions ∪ Applications
@@ -77,19 +77,38 @@ Applications = {
 
 ### Scanner
 
-TODO: Explain these sets...
+A typical scanner of Λ-expressions should take single input - a rune reader - with `Rune` representating any single printable character. Such reader can be defined as a set: 
+
+```
+Reader = {
+  read ∈ f() -> Rune
+}
+```
+
+A scanner must provide an interface to scan input streams of runes into recognized blocks. We can define scanner as a set:
 
 ```
 Scanner = { 
-  input ∈ { rune ∈ Runes, ... },
+  input ∈ Reader
   scan  ∈ f() -> Block
 }
+```
 
+We can define block as well, with `String` representing any finite chain of runes:
+
+
+```
 Block = {
   token   ∈ Tokens,
   literal ∈ Strings
 }
+```
 
+Only tokens are left to define. According to [formal definition of _Λ-calculus_](lambda-calculus-formal-definition), we have four special characters defining the notation, these are greek **lambda** `λ`, **dot** `.`, **left paren** `(` and **right paren** `)`. Naturally, two more standard tokens must be used. A **whitespace** token - matching all spaces, tabs and new lines - and of course **end of file** token. Everything else must be tokenized as **variable**.
+
+Now, our tokens can be simply described as an enumerated set:
+
+```
 Tokens = { 
   EOF,
   LPAREN, 
@@ -105,8 +124,8 @@ Tokens = {
 
 ```
 Parser = { 
-  input ∈ { Rune, ... },
-  Parse ∈ f() -> Λ ∪ ParserErrors
+  input ∈ Reader,
+  parse ∈ f() -> Λ ∪ ParserErrors
 }
 
 Position = N
@@ -141,3 +160,5 @@ TODO: describe checkpoints for implementing a parser.
 ## Related material
 
 > HASHTAGS! [**#commonlambda**](/hashtag/commonlambda)
+
+[lambda-calculus-formal-definition](./lambda-calculus#formal-definition)
