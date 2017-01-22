@@ -75,6 +75,32 @@ Applications = {
 }
 ```
 
+### Scanner
+
+TODO: Explain these sets...
+
+```
+Scanner = { 
+  input ∈ { rune ∈ Runes, ... },
+  scan  ∈ f() -> Block
+}
+
+Block = {
+  token   ∈ Tokens,
+  literal ∈ Strings
+}
+
+Tokens = { 
+  EOF,
+  LPAREN, 
+  RPAREN, 
+  LAMBDA, 
+  DOT, 
+  WHITESPACE, 
+  VAR
+}
+```
+
 ### Parser
 
 TODO: describe checkpoints for implementing a parser.
