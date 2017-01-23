@@ -1,11 +1,5 @@
 # Λ-calculus
 
-_Lambda Calculus_
-
-## Introduction for noobs
-
-TODO: Here should go for-dummies, by example intro to lambda calculus. 
-
 ## Formal definition
 
 Lambda expressions, from now on called Λ-expression, are composed of:
@@ -43,11 +37,4 @@ To keep the notation of Λ-expressions uncluttered, the following conventions ar
 
 The abstraction operator, greek letter `λ`, is said to bind its variable wherever it occurs in the body of the abstraction. Variables that fall within the scope of an abstraction are said to be **bound**. All other variables are called **free**. For example, in the following expression `y` is a bound variable and `x` is free: `λy.x x y`. Also note that a variable is bound by its _nearest_ abstraction. The single occurrence of `x` in `λx.y (λx.z x)` is bound by the second lambda abstraction. An expression that contains no free variables is said to be **closed**. Closed lambda expressions are also known as **combinators** and are equivalent to [**terms** in _combinatory logic_](./combinatory-logic#terms).
 
-## Related material
-
-At this point, you might be interested in reading about:
-
-* [_Combinatory logic_](./combinatory-logic)
-* [_Common Λ programming language_](./common-lambda)
-
-> HASHTAGS! [**#lambdacalculus**](/hashtag/lambdacalculus) [#commonlambda](/hashtag/commonlambda)
+> HASHTAGS! #lambdacalculus
