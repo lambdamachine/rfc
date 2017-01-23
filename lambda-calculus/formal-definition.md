@@ -41,7 +41,7 @@ To keep the notation of Λ-expressions uncluttered, the following conventions ar
 
 The abstraction operator, greek letter `λ`, is said to bind its variable wherever it occurs in the body of the abstraction. Variables that fall within the scope of an abstraction are said to be **bound**. All other variables are called **free**. 
 
-> EXAMPLE! In the following expression `y` is a bound variable and `x` is free: `λy.x x y`. 
+> EXAMPLE! In expression `λy.x x y`, single occurence of `y` is a bound variable and `x` is free. 
 
 Also note that a variable is bound by its _nearest_ abstraction. 
 
