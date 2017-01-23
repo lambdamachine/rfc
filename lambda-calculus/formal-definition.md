@@ -2,6 +2,10 @@
 
 ## Formal definition
 
+> DEPENDENCIES!
+>
+> ./for-dummies
+
 Lambda expressions, from now on called Λ-expression, are composed of:
 
 * variables `v1`, `v2`, ..., `vn`, ...
@@ -35,6 +39,6 @@ To keep the notation of Λ-expressions uncluttered, the following conventions ar
 
 ### Free and bound variables
 
-The abstraction operator, greek letter `λ`, is said to bind its variable wherever it occurs in the body of the abstraction. Variables that fall within the scope of an abstraction are said to be **bound**. All other variables are called **free**. For example, in the following expression `y` is a bound variable and `x` is free: `λy.x x y`. Also note that a variable is bound by its _nearest_ abstraction. The single occurrence of `x` in `λx.y (λx.z x)` is bound by the second lambda abstraction. An expression that contains no free variables is said to be **closed**. Closed lambda expressions are also known as **combinators** and are equivalent to [**terms** in _combinatory logic_](./combinatory-logic#terms).
+The abstraction operator, greek letter `λ`, is said to bind its variable wherever it occurs in the body of the abstraction. Variables that fall within the scope of an abstraction are said to be **bound**. All other variables are called **free**. For example, in the following expression `y` is a bound variable and `x` is free: `λy.x x y`. Also note that a variable is bound by its _nearest_ abstraction. The single occurrence of `x` in `λx.y (λx.z x)` is bound by the second lambda abstraction. An expression that contains no free variables is said to be **closed**. Closed lambda expressions are also known as **combinators** and are equivalent to [terms](MISSING) in [combinatory logic](MISSING).
 
 > HASHTAGS! #lambdacalculus
